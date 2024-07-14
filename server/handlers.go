@@ -1,18 +1,18 @@
 package server
 
 import (
-    "strconv"
-    "net/http"
+	"net/http"
+	"strconv"
 
-    "github.com/gin-gonic/gin"
-    "todoapp/todolist"
+	"github.com/gin-gonic/gin"
+	"todoapp/todolist"
 )
 
 var list = todolist.NewList()
 
 func GetList(c *gin.Context) {
 	c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		"list": list.Items,
+		"list":  list.Items,
 		"error": "",
 	})
 }
@@ -21,14 +21,14 @@ func AddItem(c *gin.Context) {
 	content := c.PostForm("content")
 	err := list.Add(content)
 	var errString string
-    if err == nil {
-        errString = ""
-    } else {
-        errString = err.Error()
-    }
+	if err == nil {
+		errString = ""
+	} else {
+		errString = err.Error()
+	}
 
 	c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		"list": list.Items,
+		"list":  list.Items,
 		"error": errString,
 	})
 }
@@ -36,22 +36,22 @@ func AddItem(c *gin.Context) {
 func SelectItem(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
-	    c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		    "list": list.Items,
-		    "error": err.Error(),
-	    })
+		c.HTML(http.StatusOK, "index.tmpl", gin.H{
+			"list":  list.Items,
+			"error": err.Error(),
+		})
 	}
 
 	err = list.ToggleSelect(id)
 	if err != nil {
-	    c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		    "list": list.Items,
-		    "error": err.Error(),
-	    })
+		c.HTML(http.StatusOK, "index.tmpl", gin.H{
+			"list":  list.Items,
+			"error": err.Error(),
+		})
 	}
 
 	c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		"list": list.Items,
+		"list":  list.Items,
 		"error": "",
 	})
 }
@@ -59,22 +59,22 @@ func SelectItem(c *gin.Context) {
 func DoneItem(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
-	    c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		    "list": list.Items,
-		    "error": err.Error(),
-	    })
+		c.HTML(http.StatusOK, "index.tmpl", gin.H{
+			"list":  list.Items,
+			"error": err.Error(),
+		})
 	}
 
 	err = list.ToggleDone(id)
 	if err != nil {
-	    c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		    "list": list.Items,
-		    "error": err.Error(),
-	    })
+		c.HTML(http.StatusOK, "index.tmpl", gin.H{
+			"list":  list.Items,
+			"error": err.Error(),
+		})
 	}
 
 	c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		"list": list.Items,
+		"list":  list.Items,
 		"error": "",
 	})
 }
@@ -82,46 +82,46 @@ func DoneItem(c *gin.Context) {
 func RemoveItem(c *gin.Context) {
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
-	    c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		    "list": list.Items,
-		    "error": err.Error(),
-	    })
+		c.HTML(http.StatusOK, "index.tmpl", gin.H{
+			"list":  list.Items,
+			"error": err.Error(),
+		})
 	}
 
 	err = list.Remove(id)
 	if err != nil {
-	    c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		    "list": list.Items,
-		    "error": err.Error(),
-	    })
+		c.HTML(http.StatusOK, "index.tmpl", gin.H{
+			"list":  list.Items,
+			"error": err.Error(),
+		})
 	}
 
 	c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		"list": list.Items,
+		"list":  list.Items,
 		"error": "",
 	})
 }
 
 func RemoveAll(c *gin.Context) {
-    list.RemoveAll()
+	list.RemoveAll()
 	c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		"list": list.Items,
+		"list":  list.Items,
 		"error": "",
 	})
 }
 
 func RemoveSelecteds(c *gin.Context) {
-    list.RemoveSelecteds()
+	list.RemoveSelecteds()
 	c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		"list": list.Items,
+		"list":  list.Items,
 		"error": "",
 	})
 }
 
 func DoneSelecteds(c *gin.Context) {
-    list.ToggleDoneSelecteds()
+	list.ToggleDoneSelecteds()
 	c.HTML(http.StatusOK, "index.tmpl", gin.H{
-		"list": list.Items,
+		"list":  list.Items,
 		"error": "",
 	})
 }
