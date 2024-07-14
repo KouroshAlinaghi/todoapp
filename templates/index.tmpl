@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Todo App</title>
+        <link href="/static/css/style.css" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Todo List</h1>
+
+            <form action="/" method="post" class="form">
+                <input type="text" name="content" placeholder="Do assignments...">
+                <input type="submit" value="Add" class="submit">
+            </form>
+
+            <p>{{ .error }}</p>
+
+            <div class="list">
+                <ul>
+                    {{range .list}}
+                        {{if .Done}}
+                            {{if .Selected}}
+                                <li class="done selected item">
+                            {{else}}
+                                <li class="done item">
+                            {{end}}
+                        {{else}}
+                            {{if .Selected}}
+                                <li class="selected item">
+                            {{else}}
+                                <li class="item">
+                            {{end}}
+                        {{end}}
+
+                        <form action="/select/{{ .Id }}" method="post">
+                            <input type="submit" value="Select" class="select">
+                        </form>
+
+                        <p>{{ .Content }}</p>
+
+                        <form action="/done/{{ .Id }}" method="post">
+                            <input type="submit" value="Mark as done" class="markdone">
+                        </form>
+
+                        <form action="/remove/{{ .Id }}" method="post">
+                            <input type="submit" value="Remove" class="remove">
+                        </form>
+
+                        </li>
+                    {{end}}
+                </ul>
+                <div class="buttons">
+                    <form action="/done-selected" method="post">
+                        <input type="submit" value="Mark selecteds as done" class="done-sel">
+                    </form>
+
+                    <form action="/remove-selected" method="post">
+                        <input type="submit" value="Remove selecteds" class="rem">
+                    </form>
+
+                    <form action="/remove" method="post">
+                        <input type="submit" value="Remove all" class="rem">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

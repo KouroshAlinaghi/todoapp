@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+html {
+    font-size: 62.5%;
+    position: relative;
+}
+
+html, body {
+    min-height: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.container {
+    width: 50%;
+    margin: 50px auto;
+}
+
+.form {
+    margin: 40px 0;
+    display: inline;
+}
+
+input {
+    padding: 10px;
+    border: none;
+}
+
+input[type=text] {
+    background: none;
+    box-shadow: none;
+    border: 1px solid #333;
+    padding: 10px 15px;
+    border-radius: 4px;
+}
+
+.submit {
+    background: none;
+    border: 1px solid #333;
+    border-radius: 4px;
+}
+
+.submit:hover {
+    background-color: #5DBA7C;
+    border: 1px solid #5DBA7C;
+    color: #fff;
+    transition: 0.2s;
+}
+
+p {
+    margin-left: 80px;
+    font-size: 25px;
+}
+
+.selected {
+    background-color: #efefef;
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+.item {
+    display: flex;
+    margin: 20px 0;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.46) 0px 1px 4px;
+}
+
+.markdone {
+    background-color: #5DBA7C;
+    flex-grow: 1;
+    height: 100%;
+    color: #fff;
+}
+
+.markdone:hover, .done-sel:hover {
+    background-color: #6bdb91;
+    transition: 0.3s;
+}
+
+.select {
+    background-color: #478CCF;
+    flex-grow: 1;
+    height: 100%;
+    border-radius: 4px 0 0 4px;
+    color: #fff;
+}
+
+.select:hover {
+    background-color: #52a3f2;
+    transition: 0.3s;
+}
+
+.remove {
+    background-color: #D05C3F;
+    color: #fff;
+    flex-grow: 1;
+    height: 100%;
+    border-radius: 0 4px 4px 0;
+}
+
+.remove:hover, .rem:hover {
+    background-color: #df6446;
+    transition: 0.3s;
+}
+
+p {
+    word-break: break-all;
+    flex-grow: 4;
+    margin: 0;
+    padding: 12px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rem {
+    background-color: #D05C3F;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.done-sel {
+    background-color: #5DBA7C;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+}
